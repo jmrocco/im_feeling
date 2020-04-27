@@ -1,22 +1,38 @@
 /* This is the main css styling for the project */
+/* todo-> styling for movie information */
+
 body {
-  background-color: #2e4a99;
+  background-color: #3bddba;
   color: #fff;
+  font-family: 'Nunito Sans', sans-serif;
+  
+}
+
+.activity-checkboxes {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Nunito Sans', sans-serif;
+  justify-content: center;
+  /* margin-right: 3%; */
+}
+.input-field {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  /* margin-left: 0%;  */
 }
 
-h1 {
+#title{
   text-align: center;
   font-weight: bold;
+  font-size: 400%;
+  /* margin: 0% 0% 0% 2%; */
 }
 
-.inputs {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
+
+.criteria{
+  position:relative;
+  /* margin-top: 40%; */
 }
 
 input {
@@ -28,14 +44,78 @@ button {
   margin: 5px;
   cursor: pointer;
   border: 2px solid #fff;
-  background-color: #2e4a99;
+  background-color: #ff95df;
   color: #fff;
-  padding: 10px;
+  padding: 10px; 
   font-size: 16px;
 }
 
 button:hover {
-  background-color: #5788fa;
+  background-color: #ff46c7;
   transition: background-color 0.2s;
+}
+
+ul li {
+  display: inline;
+  padding: 20px;
+}
+
+/* label properites */
+li label{
+  display: inline-block;
+  background-color: #ff95df;
+  border: 2px solid  #fff;
+  color: #fff;
+  border-radius: 25px;
+  margin: 3px 0px;
+  transition: all .2s;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/*the properties of the checkbox before checked*/
+li label::before {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 6px 2px 2px;
+  content: "+";
+  transition: transform .3s ease-in-out;
+}
+
+/* changes the colour of the checkbox on checked */
+li input[type="checkbox"]:checked + label {
+  border: 2px solid #1bdbf8;
+  background-color: #12bbd4;
+  color: #fff;
+  transition: all .2s;
+}
+
+/* makes the checkbox invisible */
+li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+ #movie-title {
+  font-size: 200%;
+  text-align: left;
+  font-weight: bold;
+  width: auto;
+}
+
+ #movie-date {
+  font-size: 100%;
+  text-align: left;
+} 
+
+#movie-descrip {
+  font-size: 100%;
+  width: 30%;
+  text-align: left;
+} 
+
+#movie-img{
+  margin: 0%;
 }
 

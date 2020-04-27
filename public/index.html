@@ -8,15 +8,27 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <h1>I'm feeling...</h1>
-  <div class="request-buttons">
-    <div>
-      <input id="input" value="">
-      <button id="fetch-button">Go</button>
-    </div>
-  </div>
   <div id="output-container">
     
+  </div>
+  <div class = "criteria">
+    <div class="request-buttons">
+      <div class="input-field">
+        <input id="input" value="">
+        <button id="fetch-button">Go</button>
+      </div>
+      <div class ="activity-checkboxes">
+        <ul>
+          <li><input type="checkbox" id="movies" value="movies">
+          <label for="movies">Movies</label></li>
+          <li><input type="checkbox" id="books" value="books">
+          <label for="books">Books</label></li>
+          <li><input type="checkbox" id="music" value="music">
+          <label for="music">Music</label></li>
+        </ul>
+      </div>
+    </div>
+    <h1 id="title">I'm feeling...</h1>
   </div>
   <script src="script.js"></script>
 </body>
