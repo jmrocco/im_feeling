@@ -43,7 +43,7 @@ fetchButton.addEventListener('click', () => {
         image = jsonResponse.poster_path;
         releaseDate = jsonResponse.release_date;
         description = jsonResponse.overview;
-        console.log(jsonResponse);
+        
        generate(title,image,releaseDate,description);
       
     });
@@ -69,9 +69,14 @@ function checkActivity() {
 }
 
 function generate(title,image,releaseDate,description){
-  const url = `https://image.tmdb.org/t/p/w342${image}`;
-  console.log(title);
-  console.log(image);
-  outputContainer.innerHTML = `<h1 id="movie-title">${title}</h1><h2 id="movie-date">Release date: ${releaseDate}<p id= "movie-descrip">${description}</p>`;;
+  const url = `https://image.tmdb.org/t/p/w185${image}`;
+ 
+  document.getElementById('title_movie').innerHTML = title;
+  document.getElementById('release_date').innerHTML = releaseDate;
+  document.getElementById('descrip').innerHTML = description;
+
+  document.getElementById("movie_image").src = url;
+  document.getElementById("movie_card").style.backgroundColor = "white";
+
 
 }

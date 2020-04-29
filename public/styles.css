@@ -1,10 +1,14 @@
 /* This is the main css styling for the project */
 /* todo-> styling for movie information */
 
+
+
+
 body {
   background-color: #3bddba;
   color: #fff;
   font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
   
 }
 
@@ -26,13 +30,13 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 400%;
-  /* margin: 0% 0% 0% 2%; */
+  margin: 0% 0% 0% 4%; 
 }
 
 
 .criteria{
-  position:relative;
-  /* margin-top: 40%; */
+  position: absolute;
+  margin:  10% 0% 0% 35%; 
 }
 
 input {
@@ -97,25 +101,42 @@ li input[type="checkbox"] {
   opacity: 0;
 }
 
- #movie-title {
-  font-size: 200%;
-  text-align: left;
-  font-weight: bold;
-  width: auto;
+
+.movie_card{
+  width: 700px;
+  height:400px;
+  border-radius: 25px;
+  margin: auto;
+  max-width: 700px;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
- #movie-date {
-  font-size: 100%;
-  text-align: left;
-} 
 
-#movie-descrip {
-  font-size: 100%;
-  width: 30%;
-  text-align: left;
-} 
-
-#movie-img{
-  margin: 0%;
+#title_movie , #release_date{
+  font-size: 110%;
+  color:black;
 }
+
+#release_date{
+  margin:0;
+  font-size: 0.9vw;
+}
+
+#descrip{
+  width: 50%;
+  font-size: 0.9vw;
+  color:black;
+  margin: 0% 0% 0% 0%;
+}
+
+.images{
+float: right;
+position:relative;
+margin-right: 33%;
+margin-top: -25%;
+}
+
 

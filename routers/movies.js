@@ -7,9 +7,7 @@ const { movieGenre } = require('./movieGenre');
 const { getRandomElement } = require('./utils');
 
 const API_KEY = "";
-const page = Math.floor(Math.random()* 500);
-const URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&with_genres=`;
-
+const URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=`;
 
 
 let moviesRouter = express.Router();
@@ -21,8 +19,8 @@ moviesRouter.use(cors());
 moviesRouter.get('/:mood', (req, res, next) => {
     const mood = req.params.mood;
     const genre = findGenre(mood);
-
-    const endpoint = URL + genre;
+    const page = Math.floor(Math.random()* 500);
+    const endpoint = URL + page + "&with_genres=" + genre;
 
     fetch(endpoint)
     .then(response => {
@@ -34,7 +32,6 @@ moviesRouter.get('/:mood', (req, res, next) => {
         console.log(networkError.message);
     })
     .then(jsonResponse => {
-        console.log("Movie response success:200")
         res.send(JSON.stringify(getRandomElement(jsonResponse)));
     })
 
