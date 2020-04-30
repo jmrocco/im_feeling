@@ -102,7 +102,7 @@ li input[type="checkbox"] {
 }
 
 
-.movie_card{
+.card{
   width: 700px;
   height:400px;
   border-radius: 25px;
@@ -115,7 +115,8 @@ li input[type="checkbox"] {
 }
 
 
-#title_movie , #release_date{
+
+#title_content , #release_date{
   font-size: 110%;
   color:black;
 }
