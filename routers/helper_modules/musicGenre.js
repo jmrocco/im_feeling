@@ -1,4 +1,5 @@
-let musicGenre = {
+function musicGenre(mood){
+let moodMatch = {
     happy: "happy",
     sad: "sad",
     romantic: "romance",
@@ -17,12 +18,12 @@ let musicGenre = {
   const excited =[ "club","dance","dancehall","disco","electronic", "dubstep","groove","hip-hop"];
   const dreamy = ["acoustic", "ambient","chill","classical","disney","jazz","road-trip","trance"];
 
-  const happyRandom = Math.floor(Math.random() * happy.length);
-  const sadRandom = Math.floor(Math.random() * sad.length);
-  const romanticRandom = Math.floor(Math.random() * romantic.length);
-  const madRandom = Math.floor(Math.random() * mad.length);
-  const excitedRandom = Math.floor(Math.random() * excited.length);
-  const dreamyRandom = Math.floor(Math.random() * dreamy.length);
+  let happyRandom = Math.floor(Math.random() * happy.length);
+  let sadRandom = Math.floor(Math.random() * sad.length);
+  let romanticRandom = Math.floor(Math.random() * romantic.length);
+  let madRandom = Math.floor(Math.random() * mad.length);
+  let excitedRandom = Math.floor(Math.random() * excited.length);
+  let dreamyRandom = Math.floor(Math.random() * dreamy.length);
 
   //randomizes genres
   musicGenre.happy = happy[happyRandom];
@@ -31,7 +32,9 @@ let musicGenre = {
   musicGenre.mad = mad[madRandom];
   musicGenre.excited = excited[excitedRandom];
   musicGenre.dreamy = dreamy[dreamyRandom];
-  
+ 
+  return moodMatch[mood];
+}
   module.exports = {
    musicGenre
   };

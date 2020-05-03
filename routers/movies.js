@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const fetch   = require('node-fetch');
 
-const { movieGenre } = require('./movieGenre');
-const { getRandomElement } = require('./utils');
+const { movieGenre } = require('./helper_modules/movieGenre');
+const { getRandomElement } = require('./helper_modules/utils');
 
 const API_KEY = "";
 const URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=`;
@@ -41,7 +41,7 @@ moviesRouter.get('/:mood', (req, res, next) => {
 //function that compares the mood input to the movie genre object
 function findGenre(mood){
     mood = mood.replace(':','');
-    return movieGenre[mood];
+    return movieGenre(mood);
 }
 
 

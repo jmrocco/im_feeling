@@ -1,5 +1,7 @@
 //default movieGenres
-let movieGenre = {
+function movieGenre(mood){
+
+let moodMatch = {
   happy: 35,
   sad: 18,
   romantic: 10749,
@@ -9,8 +11,8 @@ let movieGenre = {
 };
 
 
-const randomNumberMad = Math.floor(Math.random() * 5);
-const randomNumberhappy = Math.floor(Math.random() * 2);
+let randomNumberMad = Math.floor(Math.random() * 5);
+let randomNumberhappy = Math.floor(Math.random() * 2);
 const mad = [53,28,27,80,10752];
 const happy = [35,10751];
 
@@ -18,6 +20,9 @@ const happy = [35,10751];
 movieGenre.happy = happy[randomNumberhappy];
 movieGenre.mad = mad[randomNumberMad];
 
+return moodMatch[mood];
+
+}
 module.exports = {
   movieGenre
 };

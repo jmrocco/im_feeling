@@ -1,14 +1,15 @@
 /* This is the main css styling for the project */
 /* todo-> styling for movie information */
-
-
-
-
+html{
+  height: 100%;
+}
 body {
-  background-color: #3bddba;
+  background: linear-gradient(35deg, #64B6AC, rgb(81, 143, 165) 100%);
+ 
   color: #fff;
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
+  
   
 }
 
@@ -17,13 +18,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* margin-right: 3%; */
 }
 .input-field {
   justify-content: center;
   display: flex;
   align-items: center;
-  /* margin-left: 0%;  */
 }
 
 #title{
@@ -31,6 +30,9 @@ body {
   font-weight: bold;
   font-size: 400%;
   margin: 0% 0% 0% 4%; 
+  
+  /* text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.171); */
+  text-shadow: 0.15rem -0.15rem rgb(252, 173, 252), -0.15rem -0.15rem rgb(154, 235, 235);
 }
 
 
@@ -41,7 +43,11 @@ body {
 
 input {
   font-size: 16px;
-  padding: 10px;
+  padding: 10px; 
+}
+
+input:focus{
+  outline:0;
 }
 
 button {
@@ -52,11 +58,25 @@ button {
   color: #fff;
   padding: 10px; 
   font-size: 16px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.37);
+  transition-timing-function: ease-in-out;
+  transition: 0.5s;
+  
+  
 }
 
 button:hover {
-  background-color: #ff46c7;
-  transition: background-color 0.2s;
+  background-color: #ff46c7; 
+  
+}
+
+button:active{
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.1s;
+}
+
+button:focus {
+  outline:0;
 }
 
 ul li {
@@ -75,9 +95,10 @@ li label{
   transition: all .2s;
   padding: 8px 12px;
   cursor: pointer;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-/*the properties of the checkbox before checked*/
+
 li label::before {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 900;
@@ -89,8 +110,8 @@ li label::before {
 
 /* changes the colour of the checkbox on checked */
 li input[type="checkbox"]:checked + label {
-  border: 2px solid #1bdbf8;
-  background-color: #12bbd4;
+  border: 2px solid rgb(190, 240, 231);
+  background-color: #91CCC2;
   color: #fff;
   transition: all .2s;
 }
@@ -100,6 +121,8 @@ li input[type="checkbox"] {
   position: absolute;
   opacity: 0;
 }
+
+
 
 
 .card{
@@ -113,7 +136,6 @@ li input[type="checkbox"] {
   flex-direction: column;
   padding: 20px;
 }
-
 
 
 #title_content , #release_date{
@@ -139,5 +161,7 @@ position:relative;
 margin-right: 33%;
 margin-top: -25%;
 }
+
+
 
 

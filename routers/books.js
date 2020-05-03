@@ -3,33 +3,26 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const fetch   = require('node-fetch');
 
-const { musicGenre } = require('./helper_modules/musicGenre');
+const { bookGenre } = require('./helper_modules/bookGenre');
 
-const OAUTH_TOKEN = "";
-const URL = "https://api.spotify.com/v1/recommendations?limit=1&market=US&seed_genres=";
-
-
-let musicRouter = express.Router();
-
-musicRouter.use(bodyParser.json());
-musicRouter.use(cors());
+const URL = "https://openlibrary.org/subjects/";
 
 
-musicRouter.get('/:mood', (req, res, next) => {
+let booksRouter = express.Router();
+
+booksRouter.use(bodyParser.json());
+booksRouter.use(cors());
+
+
+booksRouter.get('/:mood', (req, res) => {
     const mood = req.params.mood;
     const genre = findGenre(mood);
     
-    const endpoint = URL + genre;
-
-    fetch(endpoint, {
-        method: 'GET',
-        headers: {
-            'Accept': "application/json",
-            'Content-Type': "application/json",
-            'Authorization': `Bearer ${OAUTH_TOKEN}`
-        }
-    })
-        
+    //limit the number of books recieved to 500 otherwise the
+    //response takes a considerable amount of time to return
+    //this is just for testing purposes
+    const endpoint = URL + genre + '.json?limit=500';
+    fetch(endpoint)
     .then(response => {
         if(response.ok){
             return response.json();
@@ -48,8 +41,8 @@ musicRouter.get('/:mood', (req, res, next) => {
 //function that compares the mood input to the music genre object
 function findGenre(mood){
     mood = mood.replace(':','');
-    return musicGenre(mood);
+    return bookGenre(mood);
 }
 
 
-module.exports = musicRouter;
+module.exports = booksRouter;

@@ -25,6 +25,11 @@ const reset = () => {
 
   imageContent.src = "";
   contentCard.style.backgroundColor = "";
+  inputBox.value = "";
+
+  bookCheckbox.checked = false;
+  movieCheckbox.checked = false;
+  musicCheckbox.checked = false;
 
 }
 
@@ -42,7 +47,10 @@ fetchButton.addEventListener('click', () => {
     titleContent.innerHTML = '<p>You must choose an activity.</p>';
   }else if (input === ""){
     titleContent.innerHTML = '<p>You must specify a mood.</p>';
+  }else if (doubleCheck()){
+    titleContent.innerHTML = '<p>Please choose ONE activity.</p>';
   }else{
+
     fetch(`/${activity}/:${input}`)
     .then(response => {
       if (response.ok) {
@@ -56,7 +64,9 @@ fetchButton.addEventListener('click', () => {
         if (activity === "movies"){
           generateMovie(jsonResponse);
         }else if (activity === "music"){
-         generateMusic(jsonResponse);
+          generateMusic(jsonResponse);
+        }else{
+          generateBook(jsonResponse);
         }
       
     });
@@ -81,14 +91,17 @@ function checkActivity() {
 }
 
 function generateMovie(jsonResponse){
-  const url = `https://image.tmdb.org/t/p/w185${image}`;
+
   title = jsonResponse.title;
   image = jsonResponse.poster_path;
+
+  let url = `https://image.tmdb.org/t/p/w185${image}`;
+
   releaseDate = jsonResponse.release_date;
   description = jsonResponse.overview;
  
   titleContent.innerHTML = title;
-  releaseDateContent.innerHTML = releaseDate;
+  releaseDateContent.innerHTML = "Release Date: " + releaseDate;
   descriptionContent.innerHTML = description;
 
   imageContent.src = url;
@@ -97,6 +110,7 @@ function generateMovie(jsonResponse){
 }
 
 function generateMusic(jsonResponse){
+  
   title = jsonResponse['tracks'][0]['name'];
   image = jsonResponse['tracks'][0]['album']['images'][1]['url'];
   releaseDate = jsonResponse['tracks'][0]['album']['release_date'];
@@ -111,11 +125,94 @@ function generateMusic(jsonResponse){
 
 }
 
+async function generateBook(jsonResponse){
+  console.log(jsonResponse);
+  const index = randomElement(jsonResponse['works']);
+  const OLID = jsonResponse['works'][index]['cover_edition_key'];
+  const src = `http://covers.openlibrary.org/b/olid/${OLID}-M.jpg`;
+
+  title = jsonResponse['works'][index]['title'];
+
+  console.log(title + " " + index);
+  let author;
+  try{
+    author = jsonResponse['works'][index]['authors'][0]['name'];
+  }catch{
+    console.log("No author in database:Error")
+  }
+  image = src;
+  releaseDate = "By " + author;
+  const googleTitle = title.split(" ").join("+");
+ 
+     
+  generateDescriptionGoogle(googleTitle)
+    .then(bookDescription => {
+      if (bookDescription != undefined){
+        descriptionContent.innerHTML = descriptionLength(bookDescription);
+      }else{
+        descriptionContent.innerHTML = "";
+      }
+       });
+
+  titleContent.innerHTML = title;
+  releaseDateContent.innerHTML = releaseDate;
+     
+  
+  imageContent.src = image;
+  contentCard.style.backgroundColor = "white";
+
+
+}
+
+function descriptionLength(bookDescription){
+  console.log(bookDescription.length);
+  if (bookDescription.length >= 640){
+    return bookDescription.slice(0,640) + " .........";
+  }else{
+    return bookDescription;
+  }
+
+}
+
 function getMusicArtists(jsonResponse){
-  let artists = jsonResponse['tracks'][0]['artists'];
+  let artists = jsonResponse['tracks'][0] ['artists'];
   description = "";
+
   
   for (let x = 0; x < artists.length; x++){
     description += " " + artists[x]['name'];
   }
+}
+
+function randomElement(works){
+  const maxNum = works.length;
+  return Math.floor(Math.random() * maxNum);
+}
+
+async function generateDescriptionGoogle(googleTitle){
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${googleTitle}&maxResults=1`;
+
+  let response = await fetch(url);
+  let detailResponse = await response.json();
+  console.log(detailResponse);
+  let bookDescription = detailResponse['items'][0]['volumeInfo']['description'];
+ 
+  return bookDescription;
+}
+
+function doubleCheck(){
+  const book = bookCheckbox.checked;
+  const music = musicCheckbox.checked;
+  const movie = movieCheckbox.checked;
+
+  if (book && music){
+    return true;
+  }else if (book && movie){
+    return true;
+  }else if (movie && music){
+    return true;
+  }else{
+    return false;
+  }
+
 }
