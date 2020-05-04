@@ -1,18 +1,20 @@
 /* This is the main css styling for the project */
-/* todo-> styling for movie information */
+
+
+/* page requirements */
 html{
   height: 100%;
 }
 body {
   background: linear-gradient(35deg, #64B6AC, rgb(81, 143, 165) 100%);
- 
   color: #fff;
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
-  
-  
 }
+/* ////////////////////// */
 
+
+/* buttons, input box, and the main title*/
 .activity-checkboxes {
   display: flex;
   flex-direction: column;
@@ -30,24 +32,65 @@ body {
   font-weight: bold;
   font-size: 400%;
   margin: 0% 0% 0% 4%; 
-  
-  /* text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.171); */
   text-shadow: 0.15rem -0.15rem rgb(252, 173, 252), -0.15rem -0.15rem rgb(154, 235, 235);
 }
-
 
 .criteria{
   position: absolute;
   margin:  10% 0% 0% 35%; 
 }
 
-input {
-  font-size: 16px;
-  padding: 10px; 
-}
-
 input:focus{
   outline:0;
+}
+
+.input_field {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid white;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  background: transparent;
+  transition: border-color 0.2s;
+  padding: 7px 0;
+}
+.input_field::placeholder {
+  color: transparent;
+}
+.input_field:placeholder-shown ~ .input_label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 16px;
+  color: rgba(255, 255, 255, 0.24);
+}
+.input_label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: transparent;
+}
+.input_field:focus {
+  padding-bottom: 6px;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+.input_field:focus ~ .input_label {
+  position: absolute;
+  top: -10px;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e;
+  font-weight: 700;
+}
+
+.input_field:required, .input_field:invalid {
+  box-shadow: none;
 }
 
 button {
@@ -61,13 +104,10 @@ button {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.37);
   transition-timing-function: ease-in-out;
   transition: 0.5s;
-  
-  
 }
 
 button:hover {
   background-color: #ff46c7; 
-  
 }
 
 button:active{
@@ -78,13 +118,15 @@ button:active{
 button:focus {
   outline:0;
 }
+/* ////////////////////// */
 
+
+/* checkboxs and their labels */
 ul li {
   display: inline;
   padding: 20px;
 }
 
-/* label properites */
 li label{
   display: inline-block;
   background-color: #ff95df;
@@ -98,7 +140,6 @@ li label{
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-
 li label::before {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 900;
@@ -108,7 +149,6 @@ li label::before {
   transition: transform .3s ease-in-out;
 }
 
-/* changes the colour of the checkbox on checked */
 li input[type="checkbox"]:checked + label {
   border: 2px solid rgb(190, 240, 231);
   background-color: #91CCC2;
@@ -116,15 +156,14 @@ li input[type="checkbox"]:checked + label {
   transition: all .2s;
 }
 
-/* makes the checkbox invisible */
 li input[type="checkbox"] {
   position: absolute;
   opacity: 0;
 }
+/* ////////////////////// */
 
 
-
-
+/* content card */
 .card{
   width: 700px;
   height:400px;
@@ -135,12 +174,15 @@ li input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-top:20px;
 }
 
-
 #title_content , #release_date{
-  font-size: 110%;
-  color:black;
+  font-size: 130%;
+  color:#ff46c7;
+  width:50%;  
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
 }
 
 #release_date{
@@ -149,19 +191,46 @@ li input[type="checkbox"] {
 }
 
 #descrip{
+  padding-top: 4px;
   width: 50%;
   font-size: 0.9vw;
   color:black;
   margin: 0% 0% 0% 0%;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .images{
-float: right;
-position:relative;
-margin-right: 33%;
-margin-top: -25%;
+  float: right;
+  position:relative;
+  margin-right: 33%;
+  margin-top: -25%;
+}
+/* ////////////////////// */
+
+/* loading icon */
+.loader {
+  border: 16px solid white;
+  border-top: 16px solid rgb(190, 240, 231);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin: 30% 0% 0% 45%;
+  display:none;
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* ////////////////////// */
 
 
+/* api cred logo */
+#api_cred{
+  width:150px;
+  height:27px;
+  margin-left: 87%;
+  margin-top: 26%;
+}
 

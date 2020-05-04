@@ -1,16 +1,16 @@
-
+//this function when given a mood, returns the corresponding book genre
 function bookGenre(mood){
-
-let moodMatch = {
-    happy: "happy",
-    sad: "sad",
-    romantic: "romance",
-    mad: "anger",
-    excited: "adventure",
-    dreamy: "fantasy",
-  };
-  
-
+  //mood object with default genre
+  let moodMatch = {
+      happy: "happy",
+      sad: "sad",
+      romantic: "romance",
+      mad: "anger",
+      excited: "adventure",
+      dreamy: "fantasy",
+    };
+    
+  //arrays matching the moods to genres
   const happy = ["happy","history","friendship","family_life","historical_fiction","life","comedy"];
   const sad =["sad","tragic","poetry","dramatic","dark","hope"];
   const romantic =["romance","love","erotic_Literature"];
@@ -18,6 +18,7 @@ let moodMatch = {
   const excited =["adventure","exciting","horror","motion_pictures"];
   const dreamy = ["fantasy","magic","science_fiction","plays"];
 
+   //random index to choose which genre to return
   let happyRandom = Math.floor(Math.random() * happy.length);
   let sadRandom = Math.floor(Math.random() * sad.length);
   let romanticRandom = Math.floor(Math.random() * romantic.length);
@@ -25,7 +26,7 @@ let moodMatch = {
   let excitedRandom = Math.floor(Math.random() * excited.length);
   let dreamyRandom = Math.floor(Math.random() * dreamy.length);
 
-  //randomizes genres
+  //sets the genre to the mood
   moodMatch.happy = happy[happyRandom];
   moodMatch.sad = sad[sadRandom];
   moodMatch.romantic = romantic[romanticRandom];

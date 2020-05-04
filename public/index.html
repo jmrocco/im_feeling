@@ -1,4 +1,4 @@
-<!-- This is the main html file-->
+<!-- this file is the html for the web app -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,34 +8,37 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <div class = "card" id="card">
-        <h1 id="title_content"></h1>
-        <h4 id="release_date"></h4>
-        <p id="descrip"></p>
-    </div>
-    <div class = "images">
-      <img id="image_content"/>
-    </div>
+  <div class = "card" id="card">
+    <div class="loader"></div>
+    <h1 id="title_content"></h1>
+    <h4 id="release_date"></h4>
+    <p id="descrip"></p>
+  </div>
+  <div class = "images">
+    <img id="image_content"/>
+  </div>
   <div class = "criteria">
     <div class="request-buttons">
       <div class="input-field">
-        <input id="input" value="">
+        <input id="input" value="" class="input_field" placeholder="Mood" name="mood">
+        <label for="mood" class="input_label">mood</label>
         <button id="fetch-button">Go</button>
         <button id="reset-button">Reset</button>
       </div>
       <div class ="activity-checkboxes">
         <ul>
-          <li><input type="checkbox" id="movies" value="movies">
-          <label for="movies">Movies</label></li>
-          <li><input type="checkbox" id="books" value="books">
-          <label for="books">Books</label></li>
-          <li><input type="checkbox" id="music" value="music">
-          <label for="music">Music</label></li>
+        <li><input type="checkbox" id="movies" value="movies">
+        <label for="movies">Movies</label></li>
+        <li><input type="checkbox" id="books" value="books">
+        <label for="books">Books</label></li>
+        <li><input type="checkbox" id="music" value="music">
+        <label for="music">Music</label></li>
         </ul>
       </div>
     </div>
     <h1 id="title">I'm feeling...</h1>
   </div>
+  <img id="api_cred" src="./api_cred.png"/>
   <script src="script.js"></script>
 </body>
 </html>
